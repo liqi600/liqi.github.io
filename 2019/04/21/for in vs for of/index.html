@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Hello World｜QiLi&#39;s blog
+        for in vs for of｜QiLi&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="https://liqi600.github.io/myBlogs/myBlogs/2019/04/21/hello-world/">
+    <link rel="canonical" href="https://liqi600.github.io/myBlogs/myBlogs/2019/04/21/for in vs for of/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/myBlogs/css/bootstrap.min.css">
@@ -136,7 +136,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Hello World</h1>
+                    <h1>for in vs for of</h1>
                     
                     <span class="meta">
                          作者 Qi Li
@@ -153,7 +153,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Hello World
+            for in vs for of
         </span>
     </div>
 </header>
@@ -164,25 +164,22 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <p>ES5具有遍历数组功能的有map、filter、some、every、reduce、reduceRight等，只不过他们的返回结果不一样。但是使用foreach遍历数组的话，使用break不能中断循环，使用return也不能返回到外层函数。<br>那么接下来我们一起看一下for in 和for of 的区别吧。</p>
+<h2 id="vs"><a href="#vs" class="headerlink" title="vs"></a>vs</h2><h3 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//<span class="keyword">for</span> <span class="keyword">in</span> 应用于数组</span><br><span class="line">Array.prototype.sayHello = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    console.log(<span class="string">"Hello"</span>)</span><br><span class="line">&#125;</span><br><span class="line">Array.prototype.str = <span class="string">'world'</span>;</span><br><span class="line">var myArray = [1,2,10,30,100];</span><br><span class="line">myArray.name=<span class="string">'数组'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> index <span class="keyword">in</span> myArray)&#123;</span><br><span class="line">    console.log(index);</span><br><span class="line">&#125;</span><br><span class="line">//输出结果如下</span><br><span class="line">0,1,2,3,4,name,str,sayHello</span><br><span class="line"></span><br><span class="line">//<span class="keyword">for</span> <span class="keyword">in</span>  应用于对象中</span><br><span class="line">Object.prototype.sayHello = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    console.log(<span class="string">'Hello'</span>);</span><br><span class="line">&#125;</span><br><span class="line">Obeject.prototype.str = <span class="string">'World'</span>;</span><br><span class="line">var myObject = &#123;name:<span class="string">'zhangsan'</span>,age:100&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> index <span class="keyword">in</span> myObject)&#123;</span><br><span class="line">    console.log(index);</span><br><span class="line">&#125;</span><br><span class="line">//输出结果</span><br><span class="line">name,age,str,sayHello</span><br><span class="line">//首先输出的是对象的属性名，再是对象原型中的属性和方法，</span><br><span class="line">//如果不想让其输出原型中的属性和方法，可以使用hasOwnProperty方法进行过滤</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> index <span class="keyword">in</span> myObject)&#123;</span><br><span class="line">    <span class="keyword">if</span>(myObject.hasOwnProperty(index))&#123;</span><br><span class="line">        console.log(index)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//输出结果为</span><br><span class="line">name,age</span><br><span class="line">//你也可以用Object.keys()方法获取所有的自身可枚举属性组成的数组。</span><br><span class="line">Object.keys(myObject)</span><br></pre></td></tr></table></figure>
+<p>可以看出for in 应用于数组循环返回的是数组的下标和数组的属性和原型上的方法和属性，而for in应用于对象循环返回的是对象的属性名和原型中的方法和属性。<br>使用for in 也可以遍历数组，但是会存在以下问题：<br>1.index索引为字符串型数字，不能直接进行几何运算<br>2.遍历顺序有可能不是按照实际数组的内部顺序<br>3.使用for in会遍历数组所有的可枚举属性，包括原型。例如上栗的原型方法method和name属性</p>
+<h3 id="for-of"><a href="#for-of" class="headerlink" title="for of"></a>for of</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Object.prototype.sayHello = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    console.log(<span class="string">'Hello'</span>);</span><br><span class="line">&#125;</span><br><span class="line">var myObject = &#123;</span><br><span class="line">    name:<span class="string">'zhangsan'</span>,</span><br><span class="line">    age:10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> key of myObject)&#123;</span><br><span class="line">    consoloe.log(key);</span><br><span class="line">&#125;</span><br><span class="line">//输出结果</span><br><span class="line">//typeError</span><br><span class="line"></span><br><span class="line">Array.prototype.sayHello = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    console.log(<span class="string">"Hello"</span>);</span><br><span class="line">&#125;</span><br><span class="line">var myArray = [1,200,3,400,100];</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> key of myArray)&#123;</span><br><span class="line">    console.log(key);</span><br><span class="line">&#125;</span><br><span class="line">//输出结果</span><br><span class="line">1,200,3,400,100</span><br></pre></td></tr></table></figure>
+<p>for in遍历的是数组的索引（即键名），而for of遍历的是数组元素值。 所以for in更适合遍历对象，不要使用for in遍历数组。</p>
+<p>出自<a href="https://juejin.im/post/5aea83c86fb9a07aae15013b" target="_blank" rel="noopener">Js中for in 和for of的区别</a></p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/myBlogs/2019/04/21/for in vs for of/" data-toggle="tooltip" data-placement="top" title="for in vs for of">&larr; Previous Post</a>
-                    </li>
                     
+                    <li class="next">
+                        <a href="/myBlogs/2019/04/21/hello-world/" data-toggle="tooltip" data-placement="top" title="Hello World">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -200,7 +197,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vs"><span class="toc-text">vs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#for-in"><span class="toc-text">for in</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-of"><span class="toc-text">for of</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
